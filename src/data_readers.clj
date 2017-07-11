@@ -1,0 +1,1 @@
+{imgcat/file imgcat.core/from-file}

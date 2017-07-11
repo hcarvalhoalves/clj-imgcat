@@ -23,11 +23,7 @@
   (let [encoder (Base64/getEncoder)]
     (format iterm2-protocol-tmpl (alength bytes) (.encodeToString encoder bytes))))
 
-(def sample->iterm2-blob (comp bytes->iterm2-blob read-file-as-bytes jio/as-file jio/resource))
+(def file->iterm2-blob (comp bytes->iterm2-blob read-file-as-bytes jio/as-file))
 
-(defn supported-terminal? []
+(defn is-iterm? []
   (= (System/getenv "TERM_PROGRAM") "iTerm.app"))
-
-(defn cat! [^String blob]
-  (when (supported-terminal?)
-    (println blob)))

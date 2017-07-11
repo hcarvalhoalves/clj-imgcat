@@ -1,7 +1,8 @@
 (ns imgcat.iterm-test
   (:require [midje.sweet :refer :all]
-            [clojure.java.io]
-            [imgcat.iterm :refer :all]))
+            [imgcat.iterm :refer :all]
+            [clojure.java.io :as jio]
+            [clojure.pprint :as pp]))
 
 
 (def sample-file (delay (clojure.java.io/as-file (clojure.java.io/resource "travolta.gif"))))
@@ -21,5 +22,3 @@
              count
              (> (base64bytes->chars 3863916)))
          => true))
-
-(cat! (sample->iterm2-blob "travolta.gif"))
